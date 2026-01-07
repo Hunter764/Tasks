@@ -38,7 +38,6 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     reflectPreference(theme);
-    setMounted(true);
 
     // Sync with system changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -52,6 +51,10 @@ export function ThemeProvider({ children }) {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, [theme]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
