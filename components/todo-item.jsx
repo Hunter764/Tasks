@@ -24,7 +24,7 @@ const TodoItem = ({ todo }) => {
             } else {
                 toast.error(result.error);
             }
-        } catch (error) {
+        } catch (err) {
             toast.error("Failed to toggle task");
         }
     };
@@ -38,7 +38,7 @@ const TodoItem = ({ todo }) => {
             } else {
                 toast.error(result.error);
             }
-        } catch (error) {
+        } catch (err) {
             toast.error("Failed to delete task");
         } finally {
             setIsDeleting(false);

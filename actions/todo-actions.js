@@ -21,11 +21,11 @@ export async function createTodo(data){
             data: JSON.parse(JSON.stringify(todo))
         }
 
-    }catch(error){
-        console.log("Error Creating Todo:", error);
+    }catch(err){
+        console.log("Error Creating Todo:", err);
         return{
             success: false,
-            error: error ? error.message: "Failed to create todo",
+            error: err?.message || "Failed to create todo",
 
         }
     }
@@ -42,11 +42,11 @@ export async function getTodos(){
             data: JSON.parse(JSON.stringify(todos))
         }
 
-    }catch(error){
-        console.log("Error fetching todos:", error);
+    }catch(err){
+        console.log("Error fetching todos:", err);
         return{
             success: false,
-            error: error ? error.message: "Failed to fetch todos",
+            error: err?.message || "Failed to fetch todos",
 
         }
     }
@@ -75,11 +75,11 @@ export async function toggleTodo(id){
             data: JSON.parse(JSON.stringify(todo))
         }
 
-    }catch(error){
-        console.log("Error toggling todo:", error);
+    }catch(err){
+        console.log("Error toggling todo:", err);
         return{
             success: false,
-            error: error ? error.message: "Failed to toggle todo",
+            error: err?.message || "Failed to toggle todo",
         }
     }
 }
@@ -104,11 +104,11 @@ export async function deleteTodo(id){
             message: "Todo deleted successfully"
         }
 
-    }catch(error){
-        console.log("Error deleting todo:", error);
+    }catch(err){
+        console.log("Error deleting todo:", err);
         return{
             success: false,
-            error: error ? error.message: "Failed to delete todo",
+            error: err?.message || "Failed to delete todo",
         }
     }
 }

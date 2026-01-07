@@ -44,7 +44,7 @@ const TodoForm = () => {
             else{
                 toast.error(result.error)
             }
-        }catch(error){
+        }catch(err){
             toast.error("Failed to create task")
         }
       }
