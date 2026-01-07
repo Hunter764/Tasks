@@ -8,9 +8,6 @@ const ThemeContext = createContext({
 });
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
-  const [mounted, setMounted] = useState(false);
-
   const storageKey = "theme-preference";
 
   const getColorPreference = () => {
@@ -23,6 +20,9 @@ export function ThemeProvider({ children }) {
     }
     return "light";
   };
+
+  const [theme, setTheme] = useState(getColorPreference);
+  const [mounted, setMounted] = useState(false);
 
   const reflectPreference = (value) => {
     if (typeof document !== "undefined") {
@@ -37,9 +37,7 @@ export function ThemeProvider({ children }) {
   };
 
   useEffect(() => {
-    const preference = getColorPreference();
-    setTheme(preference);
-    reflectPreference(preference);
+    reflectPreference(theme);
     setMounted(true);
 
     // Sync with system changes
@@ -53,7 +51,7 @@ export function ThemeProvider({ children }) {
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
