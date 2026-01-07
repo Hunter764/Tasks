@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Todo App - Elegant & Minimal",
   description: "A beautiful, minimalist todo app built with Next.js",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
